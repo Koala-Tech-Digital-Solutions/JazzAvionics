@@ -2,7 +2,7 @@ nav {
   width: 100%;
   /* background: black; */
   color: #fff;
-  padding: 4px 0;
+  padding: 0.5rem 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -27,6 +27,10 @@ nav ul li {
 .menu-icon {
   display: none;
 }
+/* .container {
+  padding: 0 !important;
+  margin: 0 !important;
+} */
 
 /* ----- media query ---- */
 
