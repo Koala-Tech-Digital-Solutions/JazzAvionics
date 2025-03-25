@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-scroll"; // ✅ import Link from react-scroll
+import { Link, useLocation } from "react-router-dom"; // updated Link import
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import menu_icon from "../../assets/menu-icon.png";
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,53 +17,48 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [mobileMenu, setMobileMenu] = useState(false);
   const toggleMenu = () => {
-    mobileMenu ? setMobileMenu(false) : setMobileMenu(true);
+    setMobileMenu((prev) => !prev);
   };
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenu(false);
+  }, [location.pathname]);
 
   return (
     <nav className={`container ${sticky ? "dark-nav" : ""}`}>
-      <img src={logo} alt="Logo" className="logo" />
+      <Link to="/">
+        <img src={logo} alt="Logo" className="logo" />
+      </Link>
       <ul className={mobileMenu ? "" : "hide-mobile-menu"}>
         <li>
-          <Link to="hero" smooth={true} offset={0} duration={500}>
-            Home
-          </Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="services" smooth={true} offset={-260} duration={500}>
-            Services
-          </Link>
+          <Link to="/services">Services</Link>
         </li>
         <li>
-          <Link to="about" smooth={true} offset={-150} duration={500}>
-            About Us
-          </Link>
+          <Link to="/about">About Us</Link>
         </li>
         <li>
-          <Link to="campus" smooth={true} offset={-260} duration={500}>
-            Gallery
-          </Link>
+          <Link to="/gallery">Gallery</Link>
         </li>
         <li>
-          <Link to="testimonials" smooth={true} offset={-260} duration={500}>
-            Testimonials
-          </Link>
+          <Link to="/#testimonials">Testimonials</Link>
         </li>
         <li>
-          <Link
-            to="contact"
-            smooth={true}
-            offset={-260}
-            duration={500}
-            className="btn"
-          >
+          <Link to="/#contact" className="btn">
             Contact Us
           </Link>
         </li>
       </ul>
-      <img src={menu_icon} alt="" className="menu-icon" onClick={toggleMenu} />
+      <img
+        src={menu_icon}
+        alt="Menu"
+        className="menu-icon"
+        onClick={toggleMenu}
+      />
     </nav>
   );
 };

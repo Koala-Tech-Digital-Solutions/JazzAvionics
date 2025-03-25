@@ -1,39 +1,34 @@
 import React, { useState } from "react";
-import Navbar from "./Components/Navbar/Navbar/";
-import Hero from "./Components/Hero/Hero";
-import Services from "./Components/Services/Services";
-import Title from "./Components/Title/Title";
-import About from "./Components/About/About";
-import Gallery from "./Components/Gallery/Gallery";
-import Testimonials from "./Components/Testimonials/Testimonials";
-import Contact from "./Components/Contact/Contact";
-import Footer from "./Components/Footer/Footer";
-import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Navbar from "../src/Components/Navbar/Navbar.jsx";
+import Footer from "../src/Components/Footer/Footer.jsx";
+import VideoPlayer from "../src/Components/VideoPlayer/VideoPlayer.jsx";
+
+// Pages
+import Home from "./Pages/Home.jsx";
+import ServicesPage from "./Pages/ServicesPage.jsx";
+import AboutPage from "./Pages/AboutPage.jsx";
+import GalleryPage from "./Pages/GalleryPage.jsx";
 
 const App = () => {
   const [playState, setPlayState] = useState(false);
 
   return (
-    <div>
+    <Router>
       <Navbar />
-      <Hero />
-      <div className="container">
-        <Title
-          subTitle="See The Full Range Of Our Services"
-          title="What We Offer"
+      <Routes>
+        <Route path="/" element={<Home setPlayState={setPlayState} />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route
+          path="/about"
+          element={<AboutPage setPlayState={setPlayState} />}
         />
-        <Services />
-        <About setPlayState={setPlayState} />
-        <Title title="We guarantee customer satisfaction" />
-        <Gallery />
-        <Title title="Discover what our customers are saying" />
-        <Testimonials />
-        <Title title="Get in Touch" />
-        <Contact />
-        <Footer />
-      </div>
+        <Route path="/gallery" element={<GalleryPage />} />
+      </Routes>
+      <Footer />
       <VideoPlayer playState={playState} setPlayState={setPlayState} />
-    </div>
+    </Router>
   );
 };
 
