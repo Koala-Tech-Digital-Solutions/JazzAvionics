@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom"; // updated Link import
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import menu_icon from "../../assets/menu-icon.png";
+import close_icon from "../../assets/close-icon.png";
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
@@ -21,44 +22,57 @@ const Navbar = () => {
     setMobileMenu((prev) => !prev);
   };
 
-  // Close mobile menu on route change
+  // Close menu on route change
   useEffect(() => {
     setMobileMenu(false);
   }, [location.pathname]);
+
+  // Prevent scroll on mobile when menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenu ? "hidden" : "auto";
+  }, [mobileMenu]);
 
   return (
     <nav className={`container ${sticky ? "dark-nav" : ""}`}>
       <Link to="/">
         <img src={logo} alt="Logo" className="logo" />
       </Link>
-      <ul className={mobileMenu ? "" : "hide-mobile-menu"}>
-        <li>
+
+      <ul
+        className={`nav-links ${
+          mobileMenu ? "show" : "hide-mobile-menu"
+        } nav-links-desktop`}
+      >
+        <li onClick={toggleMenu}>
           <Link to="/">Home</Link>
         </li>
-        <li>
+        <li onClick={toggleMenu}>
           <Link to="/services">Services</Link>
         </li>
-        <li>
+        <li onClick={toggleMenu}>
           <Link to="/about">About Us</Link>
         </li>
-        <li>
+        <li onClick={toggleMenu}>
           <Link to="/gallery">Gallery</Link>
         </li>
-        <li>
+        <li onClick={toggleMenu}>
           <Link to="/#testimonials">Testimonials</Link>
         </li>
-        <li>
+        <li onClick={toggleMenu}>
           <Link to="/#contact" className="btn">
             Contact Us
           </Link>
         </li>
       </ul>
+
       <img
-        src={menu_icon}
+        src={mobileMenu ? close_icon : menu_icon}
         alt="Menu"
         className="menu-icon"
         onClick={toggleMenu}
       />
+
+      {mobileMenu && <div className="menu-overlay" onClick={toggleMenu}></div>}
     </nav>
   );
 };
