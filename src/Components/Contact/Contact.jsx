@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
-import mail_icon from "../../assets/mail-icon.png";
-import phone_icon from "../../assets/phone-icon.png";
-import location_icon from "../../assets/location-icon.png";
+import mail_icon from "/assets/mail-icon.png";
+import phone_icon from "/assets/phone-icon.png";
+import location_icon from "/assets/location-icon.png";
 
 const Contact = () => {
   const [formData, setFormData] = useState({

@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom"; // 👈 Make sure you have this
 import "./Services.css";
 
-import service_1 from "../../assets/service1.png";
-import service_2 from "../../assets/service2.png";
-import service_3 from "../../assets/service3.png";
-import service_icon_1 from "../../assets/service1_icon.png";
-import service_icon_2 from "../../assets/service2_icon.png";
-import service_icon_3 from "../../assets/service3_icon.png";
+import service_1 from "/assets/service1.png";
+import service_2 from "/assets/service2.png";
+import service_3 from "/assets/service3.png";
+import service_icon_1 from "/assets/service1_icon.png";
+import service_icon_2 from "/assets/service2_icon.png";
+import service_icon_3 from "/assets/service3_icon.png";
 
 const Services = () => {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import "./Pages.css";
-import garminLogo from "../assets/garmin.png";
-import dynonLogo from "../assets/dynon.png";
-import avidyneLogo from "../assets/avidyne.png";
+import garminLogo from "/assets/garmin.png";
+import dynonLogo from "/assets/dynon.png";
+import avidyneLogo from "/assets/avidyne.png";
 
 const services = [
   "On-Site Avionics Maintenance and Troubleshooting",

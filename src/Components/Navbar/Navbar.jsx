@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../assets/logo.png";
-import menu_icon from "../../assets/menu-icon.png";
-import close_icon from "../../assets/close-icon.png";
+import logo from "/assets/logo.png";
+import menu_icon from "/assets/menu-icon.png";
+import close_icon from "/assets/close-icon.png";
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
