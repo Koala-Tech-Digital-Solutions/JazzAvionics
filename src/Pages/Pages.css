@@ -2,7 +2,7 @@
 .services-page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 8rem 5rem 7rem; /* Extra top padding for spacing from navbar */
+  padding: 8rem 2rem 7rem;
   font-family: "Segoe UI", sans-serif;
   color: #222;
 }
@@ -164,7 +164,7 @@
 
 .team-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 30px;
   background: white;
   border-radius: 16px;
@@ -172,17 +172,31 @@
   padding: 20px;
   align-items: center;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
-.team-card.reverse {
-  flex-direction: row-reverse;
+@media (min-width: 768px) {
+  .team-card {
+    flex-direction: row;
+  }
+
+  .team-card.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.team-image {
+  max-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .team-image img {
-  width: 300px;
+  width: 100%;
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+  display: block;
 }
 
 .team-info {
