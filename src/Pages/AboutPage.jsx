@@ -4,7 +4,7 @@ import "./Pages.css";
 const teamMembers = [
   {
     name: "Wilfer Ossa",
-    image: "/src/assets/wilfer.png",
+    image: "/assets/wilfer.png",
     whatsapp: "573123456789",
     title: "Avionics Specialist",
     description:
@@ -12,7 +12,7 @@ const teamMembers = [
   },
   {
     name: "Carlos Garcia",
-    image: "/src/assets/carlos.png",
+    image: "/assets/carlos.png",
     whatsapp: "573987654321",
     title: "Senior Avionics Technician",
     description:
