@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="hero-text">
-        <h1>Update and Maintenance of Avionics Systems</h1>
+        <h1>Avionics System Upgrades & Maintenance</h1>
         <p>
           Get on board and buckle up for this new adventure of modernizing your
           aircraft with the best team.

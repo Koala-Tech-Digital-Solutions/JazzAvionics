@@ -9,6 +9,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -28,6 +29,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 2rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 /* Mobile menu hidden state */
@@ -140,4 +142,29 @@ nav ul li {
     opacity: 1 !important;
     pointer-events: all !important;
   }
+}
+nav ul li a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #d3af37;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  transform: scaleX(1);
+}
+nav ul li a.active-link::after {
+  transform: scaleX(1);
 }
