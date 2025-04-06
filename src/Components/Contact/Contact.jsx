@@ -1,100 +1,148 @@
-import React from "react";
+import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import mail_icon from "../../assets/mail-icon.png";
 import phone_icon from "../../assets/phone-icon.png";
 import location_icon from "../../assets/location-icon.png";
 
 const Contact = () => {
-  const [result, setResult] = React.useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    message: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false);
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    formData.append("access_key", "628dee21-a929-489e-afe5-433f0bd98858");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setIsSent(false);
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Form Submitted Successfully!");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
-    }
+    emailjs
+      .send(
+        "service_cx97t6m",
+        "template_fx95ydh",
+        {
+          from_name: formData.name,
+          reply_to: formData.phone,
+          message: `Phone: ${formData.phone}\n\n Name: ${formData.name}\n\n${formData.message}`,
+        },
+        "xm3iiEWUBYyQG12Vc"
+      )
+      .then(
+        (result) => {
+          console.log("SUCCESS!", result.text);
+          setFormData({ name: "", phone: "", message: "" });
+          setIsLoading(false);
+          setIsSent(true);
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+          setIsLoading(false);
+          alert("Oops! Something went wrong. Please try again later.");
+        }
+      );
   };
 
   return (
-    <div className="contact">
-      <div className="contact-col">
-        <h3>Send us a message</h3>
-        <p>
-          Feel free to reach out using our contact form or refer to the
-          information provided below. Your feedback, questions, and suggestions
-          are important to us as we strive to deliver exceptional service.
-        </p>{" "}
-        <br />
-        <ul>
-          <li>
-            {" "}
-            <img src={phone_icon} alt="" />
-            (817) 412-3350
-          </li>
-          <li>
-            {" "}
-            <img src={phone_icon} alt="" />
-            (786) 912-1643
-          </li>
-          <li>
-            {" "}
-            <img src={mail_icon} alt="" />
-            Updateavionic@gmail.com
-          </li>
+    <>
+      {isSent && (
+        <div className="confirmation-message">
+          <h3>✅ Message Sent Successfully!</h3>
+          <p>Thank you for contacting us. We'll get back to you shortly.</p>
+        </div>
+      )}
 
-          <li>
-            {" "}
-            <img src={location_icon} alt="" />
-            Avon Park Executive Airport - Hangar 17
-            <br /> FL 33825, USA{" "}
-          </li>
-        </ul>
+      {!isSent && (
+        <div className="contact">
+          <div className="contact-col">
+            <h3>Send us a message</h3>
+            <p>
+              Feel free to reach out using our contact form or refer to the
+              information provided below. Your feedback, questions, and
+              suggestions are important to us as we strive to deliver
+              exceptional service.
+            </p>
+            <br />
+            <ul>
+              <li>
+                <img src={phone_icon} alt="" />
+                (817) 412-3350
+              </li>
+              <li>
+                <img src={phone_icon} alt="" />
+                (786) 912-1643
+              </li>
+              <li>
+                <img src={mail_icon} alt="" />
+                Updateavionic@gmail.com
+              </li>
+              <li>
+                <img src={location_icon} alt="" />
+                Avon Park Executive Airport - Hangar 17
+                <br /> FL 33825, USA
+              </li>
+            </ul>
+          </div>
+
+          <div className="contact-col">
+            <form onSubmit={handleSubmit}>
+              <label>Your Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter your name"
+                required
+              />
+              <label>Phone Number</label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Enter your mobile number"
+                required
+              />
+              <label>Write your Message Here</label>
+              <textarea
+                name="message"
+                rows="6"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Enter your Message"
+                required
+              ></textarea>
+              <button
+                type="submit"
+                className="btn dark-btn"
+                disabled={isLoading}
+              >
+                {isLoading ? "Sending..." : "Submit Now"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+      <div className="map-container" style={{ marginTop: "2rem" }}>
+        <iframe
+          title="Avon Park Executive Airport - Hangar 17"
+          width="100%"
+          height="400"
+          style={{ border: 0 }}
+          loading="lazy"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Avon+Park+Executive+Airport+-+Hangar+17,+FL+33825&output=embed"
+        ></iframe>
       </div>
-      <div className="contact-col">
-        <form onSubmit={onSubmit}>
-          <label>Your Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            required
-          />
-          <label>Phone Number</label>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Enter your mobile number"
-            required
-          />
-          <label> Write your Message Here</label>
-          <textarea
-            name="message"
-            rows="6"
-            placeholder="Enter your Message"
-            required
-          ></textarea>
-          <button type="submit" className="btn dark-btn">
-            Submit Now
-          </button>
-        </form>
-        <span>{result}</span>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -13,7 +13,7 @@
   width: 50px;
   border-radius: 50%;
   cursor: pointer;
-  background: #ddc234;
+  background: #d3af37;
 }
 .back-btn {
   right: auto;
@@ -44,7 +44,7 @@
   width: 80px;
   border-radius: 50%;
   margin-right: 10px;
-  border: 4px solid #ddc234;
+  border: 4px solid #d3af37;
 }
 .user-info {
   display: flex;
@@ -53,7 +53,7 @@
   font-size: 15px;
 }
 .user-info h3 {
-  color: #ddc234;
+  color: #d3af37;
 }
 
 /* ----- media query ---- */
@@ -74,7 +74,7 @@
   }
   .slide img {
     width: 50px;
-    border: 3px solid #ddc234;
+    border: 3px solid #d3af37;
   }
 }
 @media (max-width: 600px) {

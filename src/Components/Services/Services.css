@@ -1,9 +1,9 @@
 .services {
-  margin: 80px auto;
-  width: 90%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0;
 }
 .service img {
   width: 100%;
@@ -21,24 +21,38 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(69, 69, 70, 0.3);
+  background: rgba(69, 69, 70, 0.3); /* Dark transparent overlay */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   color: #fff;
-  cursor: pointer;
-  opacity: 0;
-  padding-top: 70%;
-  transition: 0.4s;
+  padding: 0;
+  padding-top: 1rem;
+  opacity: 1; /* 👈 always visible */
+  transition: none; /* remove transition if you don’t need animation */
 }
 .caption img {
   width: 60px;
   margin-bottom: 10px;
 }
-.service:hover .caption {
-  opacity: 1;
-  padding-top: 0;
+.services-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.services-button {
+  background: #d3af37;
+  color: #212121;
+  padding: 14px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ----- media query ---- */

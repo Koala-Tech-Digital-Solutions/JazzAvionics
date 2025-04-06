@@ -4,11 +4,39 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <div className="footer">
-      <p>© 2025 Avionic Update. All rights reserved.</p>
-      <ul>
-        <li>Terms of Services</li>
-        <li>Privacy Policy</li>
-      </ul>
+      <div className="social-icons">
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <i className="fa-brands fa-twitter"></i>
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+      <p>
+        &copy; 2025 Avionic Update Design by
+        <a href="http://www.koalatech.dev" rel="nofollow">
+          {" "}
+          KoalaTech
+        </a>
+      </p>
     </div>
   );
 };

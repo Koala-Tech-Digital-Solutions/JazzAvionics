@@ -28,7 +28,7 @@ const Gallery = () => {
         <img src={gallery_10} alt="" />
         <img src={gallery_11} alt="" /> */}
       </div>
-      <button className="btn dark-btn">Gallery</button>
+      <button className="btn dark-btn">View more</button>
     </div>
   );
 };

@@ -55,11 +55,11 @@ const Navbar = () => {
         <li onClick={toggleMenu}>
           <Link to="/gallery">Gallery</Link>
         </li>
+        {/* <li onClick={toggleMenu}>
+          <Link to="/testimonials">Testimonials</Link>
+        </li> */}
         <li onClick={toggleMenu}>
-          <Link to="/#testimonials">Testimonials</Link>
-        </li>
-        <li onClick={toggleMenu}>
-          <Link to="/#contact" className="btn">
+          <Link to="/contact" className="btn">
             Contact Us
           </Link>
         </li>

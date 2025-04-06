@@ -23,7 +23,7 @@
   font-weight: 600;
 }
 .hero-text p {
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: 10px auto 20px;
   line-height: 1.4;
 }
