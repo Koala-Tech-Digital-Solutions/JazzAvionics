@@ -80,7 +80,7 @@ const Contact = () => {
               </li>
               <li>
                 <img src={mail_icon} alt="" />
-                Updateavionic@gmail.com
+                Support@jazzavionics.com
               </li>
               <li>
                 <img src={location_icon} alt="" />
