@@ -3,6 +3,13 @@ import "./Pages.css";
 
 const teamMembers = [
   {
+    name: "Felipe Nardi",
+    image: "/assets/felipe.png",
+    title: "Manager",
+    description:
+      "Aeronautical Mechanical Engineer; Co-founder of the Aeronautical Engineering Portal; Co-founder of Jazz Engenharia Aeronáutica, Brazil's largest aeronautical certification company, with over 500 modified aircraft. Co-founder of Aeroblues, the best aircraft maintenance shop management software in Brazil. Co-founder of ecoAr, the world's best agricultural aviation application management system. Commercial Director of BRS Parachutes' operations in Brazil. Commercial Director of Diamond Aircraft's operations in Brazil.",
+  },
+  {
     name: "Wilfer Ossa",
     image: "/assets/wilfer.png",
     whatsapp: "+18174123350",

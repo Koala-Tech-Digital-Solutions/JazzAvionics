@@ -1,22 +1,23 @@
 nav {
+  height: 80px; /* Fixed height for navbar */
   width: 100%;
-  color: #d3af37;
-  padding: 0.5rem 0;
-  position: fixed;
-  top: 0;
-  left: 0;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: #090909; /* slightly darker for contrast */
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  height: 50px;
+  height: 100%; /* Fill navbar height */
+  margin-top: 15px;
+  max-height: 150px; /* Prevent stretching */
   width: auto;
-  object-fit: contain;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  object-fit: contain; /* Maintain logo aspect ratio */
 }
 
 .logo:hover {
@@ -68,8 +69,9 @@ nav ul li {
 
 /* Dark background when scrolling */
 .dark-nav {
-  background: black;
-  transition: 0.5s;
+  background: rgba(0, 0, 0, 0.6); /* more transparent */
+  backdrop-filter: blur(8px); /* optional glass effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* soft shadow */
 }
 
 /* Backdrop overlay */
@@ -146,7 +148,7 @@ nav ul li {
 nav ul li a {
   position: relative;
   text-decoration: none;
-  color: inherit;
+  color: #fff;
 }
 
 nav ul li a::after {
@@ -156,7 +158,7 @@ nav ul li a::after {
   bottom: -2px;
   width: 100%;
   height: 2px;
-  background-color: #d3af37;
+  background-color: #2d7bb5;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -167,4 +169,15 @@ nav ul li a:hover::after {
 }
 nav ul li a.active-link::after {
   transform: scaleX(1);
+}
+
+@media (max-width: 840px) {
+  nav {
+    height: 60px;
+    padding: 0 1rem;
+  }
+
+  .logo {
+    height: 100%;
+  }
 }

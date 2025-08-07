@@ -8,7 +8,7 @@
 }
 
 .header-section {
-  background: linear-gradient(to right, #fdfbfb, #ebedee);
+  background: linear-gradient(to right, #ebedee, #737c84);
   padding: 2.5rem;
   border-radius: 1rem;
   margin-bottom: 2.5rem;
@@ -18,7 +18,7 @@
 .header-section h2 {
   font-size: 2rem;
   font-weight: 700;
-  border-left: 6px solid #d3af37;
+  border-left: 6px solid #2d7bb5;
   padding-left: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -70,15 +70,20 @@
 }
 
 .service-card:hover {
-  background: #fffbe6;
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* .service-card:hover {
+  background: linear-gradient(to right, #ebedee, #737c84);
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
+} */
 
 .service-card .icon {
   margin-right: 0.5rem;
   font-size: 1.2rem;
-  color: #d3af37;
+  color: #2d7bb5;
 }
 
 @keyframes fadeInUp {
@@ -96,7 +101,7 @@
   text-align: center;
   padding: 3rem 1rem;
   border-top: 1px solid #eee;
-  background-color: #fdfdfc;
+  background: linear-gradient(to right, #ebedee, #2d7bb5);
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
   margin-top: 3rem;
@@ -114,7 +119,7 @@
 }
 
 .cta-section a {
-  color: #d3af37;
+  color: #2d7bb5;
   text-decoration: none;
   font-weight: 600;
 }
@@ -149,7 +154,7 @@
 
 .team-title {
   font-size: 2.5rem;
-  border-left: 6px solid #d3af37;
+  border-left: 6px solid #2d7bb5;
   font-weight: bold;
   margin-bottom: 50px;
 }
@@ -212,7 +217,7 @@
 
 .team-info h3 {
   font-size: 1rem;
-  color: #d45c5c;
+  color: #2d7bb5;
   margin-bottom: 15px;
 }
 

@@ -84,8 +84,8 @@ const Contact = () => {
               </li>
               <li>
                 <img src={location_icon} alt="" />
-                Avon Park Executive Airport - Hangar 17
-                <br /> FL 33825, USA
+                919 Biscayne Blvd D8
+                <br /> Deland, FL 32724, USA
               </li>
             </ul>
           </div>
@@ -132,14 +132,14 @@ const Contact = () => {
       )}
       <div className="map-container" style={{ marginTop: "2rem" }}>
         <iframe
-          title="Avon Park Executive Airport - Hangar 17"
+          title="New Location - 919 Biscayne Blvd D8, DeLand, FL"
           width="100%"
           height="400"
           style={{ border: 0 }}
           loading="lazy"
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Avon+Park+Executive+Airport+-+Hangar+17,+FL+33825&output=embed"
+          src="https://www.google.com/maps?q=919+Biscayne+Blvd+D8,+DeLand,+FL+32724&output=embed"
         ></iframe>
       </div>
     </>
