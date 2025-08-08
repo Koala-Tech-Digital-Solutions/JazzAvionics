@@ -12,7 +12,7 @@ const teamMembers = [
   {
     name: "Wilfer Ossa",
     image: "/assets/wilfer.png",
-    whatsapp: "+18174123350",
+    whatsapp: "+16892124076",
     title: "Avionics Specialist",
     description:
       "Retired from the Colombian Air Force with 25 years of experience in avionics. Served as an Avionics Technician, Inspector, and Section Chief of Avionics. Holds an active FCC General Radiotelephone Operator License. Extensive knowledge in troubleshooting, maintenance, and system integration. Currently has 2 years of hands-on experience in the U.S. aviation sector, specializing in panel with a specialization in panel upgrades (analog to digital conversions).",
@@ -20,7 +20,7 @@ const teamMembers = [
   {
     name: "Carlos Garcia",
     image: "/assets/carlos.png",
-    whatsapp: "+17869121643",
+    whatsapp: "+18633355022",
     title: "Avionics Technician",
     description:
       "Avionics and electrical systems technician with over 25 years of experience. Formerly employed by Aviónica de Occidente (Cali, Colombia) as a certified Aircraft Maintenance Technician (TMA 0837), focused on avionics installations, inspections, and repairs. Holds an active FCC General Radiotelephone Operator License. Brings 2 years of experience working in the U.S. general aviation industry. Skilled in maintenance and avionics integration on a range of airframes, including Cessna 150/152/180/182 and Piper PA-28 series. Extensive experience in agricultural (aerial spraying) aviation.",
