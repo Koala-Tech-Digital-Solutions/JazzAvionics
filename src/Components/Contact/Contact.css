@@ -27,8 +27,8 @@
 }
 .contact-col ul li {
   display: flex;
-  align-items: center;
-  margin: 10px 0;
+  align-items: flex-start;
+  gap: 10px;
 }
 .contact-col ul li img {
   width: 50px;
