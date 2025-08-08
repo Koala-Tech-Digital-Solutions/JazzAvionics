@@ -84,8 +84,7 @@ const Contact = () => {
               </li>
               <li>
                 <img src={location_icon} alt="" />
-                919 Biscayne Blvd D8
-                <br /> Deland, FL 32724, USA
+                919 Biscayne Blvd D8 Deland, FL 32724, USA
               </li>
             </ul>
           </div>

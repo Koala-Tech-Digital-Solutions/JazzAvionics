@@ -31,8 +31,10 @@
   gap: 10px;
 }
 .contact-col ul li img {
-  width: 50px;
-  margin-right: 10px;
+  width: 24px; /* smaller icon for better balance */
+  height: 24px;
+  flex-shrink: 0;
+  margin-right: 0;
 }
 .contact form input,
 .contact form textarea {
