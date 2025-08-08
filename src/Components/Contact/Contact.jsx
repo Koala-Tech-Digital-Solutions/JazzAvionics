@@ -72,11 +72,11 @@ const Contact = () => {
             <ul>
               <li>
                 <img src={phone_icon} alt="" />
-                (817) 412-3350
+                (689) 212-4076
               </li>
               <li>
                 <img src={phone_icon} alt="" />
-                (786) 912-1643
+                (863) 335-5022
               </li>
               <li>
                 <img src={mail_icon} alt="" />
@@ -84,7 +84,7 @@ const Contact = () => {
               </li>
               <li>
                 <img src={location_icon} alt="" />
-                919 Biscayne Blvd D8 Deland, FL 32724, USA
+                919 Biscayne Blvd D8, Deland, FL 32724, USA
               </li>
             </ul>
           </div>
