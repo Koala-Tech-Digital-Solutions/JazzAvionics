@@ -27,14 +27,12 @@
 }
 .contact-col ul li {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
 }
 .contact-col ul li img {
-  width: 24px; /* smaller icon for better balance */
-  height: 24px;
-  flex-shrink: 0;
-  margin-right: 0;
+  width: 50px;
+  margin-right: 10px;
 }
 .contact form input,
 .contact form textarea {
