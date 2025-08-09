@@ -54,7 +54,7 @@
 .footer .social-icons a:hover {
   opacity: 0.8;
   transform: scale(1.2);
-  color: #d3af37;
+  color: #2d7bb5;
 }
 
 @media (max-width: 600px) {
