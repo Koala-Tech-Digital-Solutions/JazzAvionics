@@ -5,8 +5,14 @@ import mail_icon from "/assets/mail-icon.png";
 import phone_icon from "/assets/phone-icon.png";
 import location_icon from "/assets/location-icon.png";
 
+const SERVICE_ID = "service_hbnl5y5";
+const TEMPLATE_TO_US = "template_fx95ydh"; // Contact Us template (shows {{name}}, {{email}}, {{phone}}, {{message}})
+const TEMPLATE_AUTOREPLY = "template_0tfq1oa"; // Auto-Reply template (needs {{to_email}}, {{to_name}}, {{user_message}})
+const PUBLIC_KEY = "xm3iiEWUBYyQG12Vc";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
+    email: "",
     name: "",
     phone: "",
     message: "",
@@ -15,38 +21,61 @@ const Contact = () => {
   const [isSent, setIsSent] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isLoading) return;
+
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.trim();
+    const message = formData.message.trim();
+
+    if (!name || !email || !message) {
+      alert("Please fill in your name, email, and message.");
+      return;
+    }
+
     setIsLoading(true);
     setIsSent(false);
 
-    emailjs
-      .send(
-        "service_hbnl5y5",
-        "template_fx95ydh",
-        {
-          from_name: formData.name,
-          reply_to: formData.phone,
-          message: `Phone: ${formData.phone}\n\n Name: ${formData.name}\n\n${formData.message}`,
-        },
-        "xm3iiEWUBYyQG12Vc"
-      )
-      .then(
-        (result) => {
-          console.log("SUCCESS!", result.text);
-          setFormData({ name: "", phone: "", message: "" });
-          setIsLoading(false);
-          setIsSent(true);
-        },
-        (error) => {
-          console.error("FAILED...", error.text);
-          setIsLoading(false);
-          alert("Oops! Something went wrong. Please try again later.");
-        }
-      );
+    // Must match variables in your "Contact Us" template
+    const contactParams = {
+      name,
+      email,
+      phone: phone || "N/A",
+      message,
+    };
+
+    // Must match variables in your "Auto-Reply" template
+    const autoReplyParams = {
+      to_email: email,
+      to_name: name || "there",
+      user_message: message, // <-- make sure {{user_message}} exists in the auto-reply template body
+    };
+
+    try {
+      await Promise.all([
+        emailjs.send(SERVICE_ID, TEMPLATE_TO_US, contactParams, PUBLIC_KEY),
+        emailjs.send(
+          SERVICE_ID,
+          TEMPLATE_AUTOREPLY,
+          autoReplyParams,
+          PUBLIC_KEY
+        ),
+      ]);
+
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setIsSent(true);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      alert("Oops! Something went wrong. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -90,7 +119,7 @@ const Contact = () => {
           </div>
 
           <div className="contact-col">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} noValidate>
               <label>Your Name</label>
               <input
                 type="text"
@@ -100,15 +129,26 @@ const Contact = () => {
                 placeholder="Enter your name"
                 required
               />
-              <label>Phone Number</label>
+
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                required
+              />
+
+              <label>Phone Number (optional)</label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Enter your mobile number"
-                required
               />
+
               <label>Write your Message Here</label>
               <textarea
                 name="message"
@@ -117,7 +157,8 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="Enter your Message"
                 required
-              ></textarea>
+              />
+
               <button
                 type="submit"
                 className="btn dark-btn"
@@ -129,6 +170,7 @@ const Contact = () => {
           </div>
         </div>
       )}
+
       <div className="map-container" style={{ marginTop: "2rem" }}>
         <iframe
           title="New Location - 919 Biscayne Blvd D8, DeLand, FL"
@@ -139,7 +181,7 @@ const Contact = () => {
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=919+Biscayne+Blvd+D8,+DeLand,+FL+32724&output=embed"
-        ></iframe>
+        />
       </div>
     </>
   );
