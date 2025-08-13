@@ -6,8 +6,8 @@ import phone_icon from "/assets/phone-icon.png";
 import location_icon from "/assets/location-icon.png";
 
 const SERVICE_ID = "service_hbnl5y5";
-const TEMPLATE_TO_US = "template_fx95ydh"; // Contact Us template (shows {{name}}, {{email}}, {{phone}}, {{message}})
-const TEMPLATE_AUTOREPLY = "template_0tfq1oa"; // Auto-Reply template (needs {{to_email}}, {{to_name}}, {{user_message}})
+const TEMPLATE_TO_US = "template_fx95ydh";
+const TEMPLATE_AUTOREPLY = "template_0tfq1oa";
 const PUBLIC_KEY = "xm3iiEWUBYyQG12Vc";
 
 const Contact = () => {
@@ -33,7 +33,6 @@ const Contact = () => {
     const email = formData.email.trim();
     const phone = formData.phone.trim();
     const message = formData.message.trim();
-
     if (!name || !email || !message) {
       alert("Please fill in your name, email, and message.");
       return;
@@ -42,19 +41,11 @@ const Contact = () => {
     setIsLoading(true);
     setIsSent(false);
 
-    // Must match variables in your "Contact Us" template
-    const contactParams = {
-      name,
-      email,
-      phone: phone || "N/A",
-      message,
-    };
-
-    // Must match variables in your "Auto-Reply" template
+    const contactParams = { name, email, phone: phone || "N/A", message };
     const autoReplyParams = {
       to_email: email,
       to_name: name || "there",
-      user_message: message, // <-- make sure {{user_message}} exists in the auto-reply template body
+      user_message: message,
     };
 
     try {
@@ -67,7 +58,6 @@ const Contact = () => {
           PUBLIC_KEY
         ),
       ]);
-
       setFormData({ name: "", email: "", phone: "", message: "" });
       setIsSent(true);
     } catch (err) {
@@ -97,23 +87,53 @@ const Contact = () => {
               suggestions are important to us as we strive to deliver
               exceptional service.
             </p>
+
             <br />
             <ul>
               <li>
-                <img src={phone_icon} alt="" />
-                (689) 212-4076
+                <a
+                  href="tel:+16892124076"
+                  aria-label="Call (689) 212-4076"
+                  title="Call (689) 212-4076"
+                >
+                  <img src={phone_icon} alt="" />
+                  (689) 212-4076
+                </a>
               </li>
+
               <li>
-                <img src={phone_icon} alt="" />
-                (863) 335-5022
+                <a
+                  href="tel:+18633355022"
+                  aria-label="Call (863) 335-5022"
+                  title="Call (863) 335-5022"
+                >
+                  <img src={phone_icon} alt="" />
+                  (863) 335-5022
+                </a>
               </li>
+
               <li>
-                <img src={mail_icon} alt="" />
-                Support@jazzavionics.com
+                <a
+                  href="mailto:support@jazzavionics.com"
+                  aria-label="Email support@jazzavionics.com"
+                  title="Email support@jazzavionics.com"
+                >
+                  <img src={mail_icon} alt="" />
+                  support@jazzavionics.com
+                </a>
               </li>
+
               <li>
-                <img src={location_icon} alt="" />
-                919 Biscayne Blvd D8, Deland, FL 32724, USA
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=919%20Biscayne%20Blvd%20D8%2C%20DeLand%2C%20FL%2032724"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open address in Google Maps"
+                  title="Open in Google Maps"
+                >
+                  <img src={location_icon} alt="" />
+                  919 Biscayne Blvd D8, Deland, FL 32724, USA
+                </a>
               </li>
             </ul>
           </div>

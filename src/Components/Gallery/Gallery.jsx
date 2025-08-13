@@ -1,34 +1,79 @@
 import React from "react";
+import Slider from "react-slick";
 import "./Gallery.css";
-// import gallery_1 from "../../assets/gallery-1.png";
-// import gallery_2 from "../../assets/gallery-2.png";
-import gallery_3 from "/assets/gallery-3.png";
-import gallery_4 from "/assets/gallery-4.png";
-import gallery_5 from "/assets/gallery-5.png";
-import gallery_6 from "/assets/gallery-6.png";
-// import gallery_7 from "../../assets/gallery-7.png";
-// import gallery_8 from "../../assets/gallery-8.png";
-// import gallery_9 from "../../assets/gallery-9.png";
-// import gallery_10 from "../../assets/gallery-10.png";
-// import gallery_11 from "../../assets/gallery-11.png";
+import { Link } from "react-router-dom";
+
+import gallery_3 from "/assets/antes:despues 1.png";
+import gallery_4 from "/assets/antes:despues 2.png";
+import gallery_5 from "/assets/antes:despues 3.png";
+import gallery_6 from "/assets/antes:despues 4.png";
+import gallery_7 from "/assets/antes:despues 5.png";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+// Custom arrow components (bigger, always visible, accessible)
+const NextArrow = ({ onClick }) => (
+  <button
+    className="slick-custom-arrow slick-custom-next"
+    onClick={onClick}
+    aria-label="Next slide"
+    type="button"
+  >
+    ›
+  </button>
+);
+
+const PrevArrow = ({ onClick }) => (
+  <button
+    className="slick-custom-arrow slick-custom-prev"
+    onClick={onClick}
+    aria-label="Previous slide"
+    type="button"
+  >
+    ‹
+  </button>
+);
 
 const Gallery = () => {
+  const settings = {
+    dots: true,
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1, // <— show ONE at a time
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    adaptiveHeight: true,
+    lazyLoad: "ondemand",
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 1 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
+    ],
+  };
+
+  const images = [gallery_3, gallery_4, gallery_5, gallery_6, gallery_7];
+
   return (
     <div className="campus">
-      <div className="gallery">
-        {/* <img src={gallery_1} alt="" />
-        <img src={gallery_2} alt="" /> */}
-        <img src={gallery_3} alt="" />
-        <img src={gallery_4} alt="" />
-        <img src={gallery_5} alt="" />
-        <img src={gallery_6} alt="" />
-        {/* <img src={gallery_7} alt="" />
-        <img src={gallery_8} alt="" />
-        <img src={gallery_9} alt="" />
-        <img src={gallery_10} alt="" />
-        <img src={gallery_11} alt="" /> */}
+      <div className="gallery-carousel">
+        <Slider {...settings}>
+          {images.map((src, i) => (
+            <div key={i} className="carousel-slide">
+              <img src={src} alt={`Gallery item ${i + 1}`} />
+            </div>
+          ))}
+        </Slider>
       </div>
-      <button className="btn dark-btn">View more</button>
+
+      <Link to="/gallery" className="btn view-more">
+        View More
+      </Link>
     </div>
   );
 };

@@ -22,7 +22,7 @@ const Footer = () => {
         </a>
       </div>
       <p>
-        &copy; 2025 Avionic Update Design by
+        &copy; 2025 Jazz Avionics Design by
         <a href="http://www.koalatech.dev" rel="nofollow">
           {" "}
           KoalaTech

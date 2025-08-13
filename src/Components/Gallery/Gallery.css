@@ -1,27 +1,135 @@
+/* ---------- Layout ---------- */
 .campus {
-  margin: 80px auto;
-  margin-top: 40px;
   width: 90%;
+  max-width: 900px;
+  margin: 40px auto 80px;
   text-align: center;
 }
-.gallery {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-}
-.gallery img {
-  width: 23%;
-  border-radius: 10px;
+
+.gallery-carousel {
+  position: relative; /* for arrow positioning */
+  width: 100%;
+  margin: 0 auto 24px;
 }
 
-/* ----- media query ---- */
-@media (max-width: 1800px) {
-  .gallery {
-    flex-wrap: wrap;
+.gallery-carousel .slick-list {
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.gallery-carousel .slick-track {
+  border-radius: 12px;
+}
+
+.slick-slide > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- Slide & Image ---------- */
+.carousel-slide {
+  width: 100%;
+  height: 420px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-slide img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto; /* keep aspect ratio */
+  height: auto;
+  object-fit: contain; /* no cropping */
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+/* Gentle zoom on hover (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  .carousel-slide:hover img {
+    transform: scale(1.05);
   }
-  .gallery img {
-    width: 48%;
-    margin-bottom: 25px;
+}
+
+/* ---------- Dots ---------- */
+.slick-dots {
+  bottom: -26px;
+}
+.slick-dots li button:before {
+  font-size: 10px;
+  opacity: 0.45;
+  color: #1f2937;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 0.9;
+}
+
+/* ---------- Custom Arrows ---------- */
+.slick-custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 22px;
+  line-height: 36px;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.2s, transform 0.2s, opacity 0.25s ease;
+}
+.slick-custom-prev {
+  left: 8px;
+}
+.slick-custom-next {
+  right: 8px;
+}
+.slick-custom-arrow:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.04);
+}
+
+/* Fade arrows in on hover (desktops only) */
+@media (hover: hover) and (pointer: fine) {
+  .slick-custom-arrow {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .gallery-carousel:hover .slick-custom-arrow {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .campus {
+    width: 94%;
+  }
+  .carousel-slide {
+    height: 260px;
+  }
+  .slick-custom-prev {
+    left: 4px;
+  }
+  .slick-custom-next {
+    right: 4px;
+  }
+  .slick-custom-arrow {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
