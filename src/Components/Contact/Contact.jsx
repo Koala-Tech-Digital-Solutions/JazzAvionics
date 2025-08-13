@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import mail_icon from "/assets/mail-icon.png";
@@ -10,6 +10,9 @@ const TEMPLATE_TO_US = "template_fx95ydh";
 const TEMPLATE_AUTOREPLY = "template_0tfq1oa";
 const PUBLIC_KEY = "xm3iiEWUBYyQG12Vc";
 
+// Address text in one place so it stays consistent
+const ADDRESS_TEXT = "919 Biscayne Blvd D8, DeLand, FL 32724";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -19,6 +22,23 @@ const Contact = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isSent, setIsSent] = useState(false);
+
+  // Build the correct Maps link for the current device
+  const mapsHref = useMemo(() => {
+    const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
+    const isIOS = /iPad|iPhone|iPod/.test(ua);
+    const encoded = encodeURIComponent(ADDRESS_TEXT);
+    return isIOS
+      ? `maps://?q=${encoded}` // Apple Maps app
+      : `https://www.google.com/maps/search/?api=1&query=${encoded}`; // Google Maps
+  }, []);
+
+  // On iOS, let the OS handle the maps:// link (no new tab)
+  const mapsTarget = useMemo(() => {
+    const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
+    const isIOS = /iPad|iPhone|iPod/.test(ua);
+    return isIOS ? "_self" : "_blank";
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,6 +53,7 @@ const Contact = () => {
     const email = formData.email.trim();
     const phone = formData.phone.trim();
     const message = formData.message.trim();
+
     if (!name || !email || !message) {
       alert("Please fill in your name, email, and message.");
       return;
@@ -125,14 +146,16 @@ const Contact = () => {
 
               <li>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=919%20Biscayne%20Blvd%20D8%2C%20DeLand%2C%20FL%2032724"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open address in Google Maps"
-                  title="Open in Google Maps"
+                  href={mapsHref}
+                  target={mapsTarget}
+                  rel={
+                    mapsTarget === "_blank" ? "noopener noreferrer" : undefined
+                  }
+                  aria-label="Open address in Maps"
+                  title="Open in Maps"
                 >
                   <img src={location_icon} alt="" />
-                  919 Biscayne Blvd D8, Deland, FL 32724, USA
+                  {ADDRESS_TEXT}
                 </a>
               </li>
             </ul>

@@ -34,15 +34,17 @@
 .contact-col ul li a {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: inherit;
+  color: #090909;
   text-decoration: none;
-  padding: 6px 4px;
-  border-radius: 10px;
+}
+.contact-col ul li .link-text {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.contact-col ul li a:hover {
-  background: rgba(0, 0, 0, 0.04);
+.contact-col ul li a:hover .link-text {
+  border-bottom: 1px solid #090909;
+  color: #000;
 }
 
 .contact-col ul li img {
