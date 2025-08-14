@@ -44,7 +44,7 @@ const Testimonials = () => {
                 </div>
               </div>
               <p>
-                AvionicUpdate provided exceptional service when upgrading my
+                Jazz Avionics provided exceptional service when upgrading my
                 aircraft's navigation system. I am very pleased with the end
                 result.
               </p>
@@ -60,7 +60,7 @@ const Testimonials = () => {
                 </div>
               </div>
               <p>
-                I highly recommend AvionicUpdate for their excellent customer
+                I highly recommend Jazz Avionics for their excellent customer
                 service and expertise in Avionics systems. I will definitely
                 hire them again in the future.
               </p>
@@ -76,7 +76,7 @@ const Testimonials = () => {
                 </div>
               </div>
               <p>
-                AvionicUpdatemade sure my communication system was working
+                Jazz Avionics made sure my communication system was working
                 properly before my next flight. Their team of experts did an
                 exceptional job.
               </p>
