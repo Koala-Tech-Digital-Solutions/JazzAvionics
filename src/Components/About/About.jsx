@@ -20,7 +20,7 @@ const About = ({ setPlayState }) => {
           />
         </div>
         <div className="about-right">
-          <h3>About Avionic Update</h3>
+          <h3>About Jazz Avionics</h3>
           <h2>Experts who help you get the best out of your aircraft.</h2>
           <p>
             Our expertise lies in inspecting and upgrading navigation,
