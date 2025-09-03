@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer">
       <div className="social-icons">
         <a
-          href="https://www.facebook.com/profile.php?id=61578852207681"
+          href="https://www.facebook.com/jazzavionicsFL"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -14,7 +14,7 @@ const Footer = () => {
         </a>
 
         <a
-          href="https://www.instagram.com/jazzavionics/"
+          href="https://www.instagram.com/jazz.avionics/"
           target="_blank"
           rel="noopener noreferrer"
         >
